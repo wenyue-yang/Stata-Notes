@@ -7,3 +7,9 @@ import dbase using "`f'", clear
 local nodbf= subinstr("`f'", ".dbf", "", .)
     save "`nodbf'.dta", replace
 }
+
+
+//append, don't miss the space after dir
+local statfiles: dir . files "*.dta"
+append using `statfiles'
+save "alldata", replace
