@@ -1,0 +1,12 @@
+//create a local(tempfile) and save
+
+//REMEMBER to rerun the entire do-file as tempfiles are locals
+
+import dbase using "$mainfolder\2015trim1\sdemt115.dbf"
+tempfile master2015Q1
+save `master2015Q1'
+import dbase using "$mainfolder\2015trim1\coe1t115.dbf", clear
+merge 1:1 CD_A ENT CON V_SEL N_HOG H_MUD N_REN using `master2015Q1'
+drop _merge
+tempfile 2015Q1
+save `2015Q1'
