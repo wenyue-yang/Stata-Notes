@@ -1,0 +1,9 @@
+//if directly import a file and save, it will be saved as "XXXX.dbf.dta" which is annoying. Remember to create a new local
+
+cd "C:\Users\wb528217\OneDrive - WBG\Mexico\Data\2014trim1"
+local allfiles: dir . files "*.dbf"
+foreach f in `allfiles' {
+import dbase using "`f'", clear
+local nodbf= subinstr("`f'", ".dbf", "", .)
+    save "`nodbf'.dta", replace
+}
